@@ -1,0 +1,12 @@
+syntax: glob
+
+## patterns
+*~
+*.DS_Store*
+*.pem
+*.pub
+*.log
+*.pyc
+*.#*
+*#
+*flymd*
