@@ -56,5 +56,5 @@ special_post_install_yum_update_for_centos:
 {% endif %}
 
 ensure_bashrc_exists:
-  file.exists:
+  file.touch:
     - name: /home/{{ grains['deescalated_user'] }}/.bashrc
