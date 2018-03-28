@@ -1,0 +1,8 @@
+[program:logging_server]
+command=bash -c "source /home/{{ grains['deescalated_user'] }}/miniconda3/bin/activate && source activate conda_env && python syslog_server.py"
+directory=/home/{{ grains['deescalated_user'] }}/logging/logging-system
+autostart=true
+autorestart=true
+startretries=3
+stderr_logfile=/var/log/supervisord-logging-server.err.log
+stdout_logfile=/var/log/supervisord-logging-server.out.log

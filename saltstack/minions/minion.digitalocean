@@ -2,15 +2,16 @@ file_client: local
 
 failhard: True
 
+id: master
+
 file_roots:
   base:
     - /vagrant/saltstack/states
 
 grains:
   roles:
-    - project
-    - dev
+    - master
+  user_home_dir: /root  
   user: root
   group: root
-
-# postgres.bins_dir: '/usr/lib/postgresql/9.6/bin/' # location of the postgres bin's path to the relevant minion for this module
+  fingerprint: 97:8c:1b:f2:6f:14:6b:5c:3b:ec:aa:46:46:74:7c:40

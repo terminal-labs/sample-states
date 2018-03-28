@@ -1,4 +1,4 @@
-{% set os, os_family = salt['grains.item']('os', 'os_family') %}
+{% set os = salt['grains.get']('os') %}
 
 ## Commented sections use a compiled python.
 #python_install_dir:
@@ -40,16 +40,20 @@
 python_packages:
   pkg.installed:
     - pkgs:
+{% if os == 'Ubuntu' or os == 'Debian' or os == 'CentOS' %}
       - python-setuptools
       - python-virtualenv
-{% if os_family == 'Debian'%}
+      - python-requests
+{% endif %}
+{% if os == 'Ubuntu' or os == 'Debian'%}
       - python
       - python-pip
       - python-dev
       - python3
       - python3-pip
       - python3-dev
-{% elif os == 'CentOS' %}
+{% endif %}
+{% if os == 'CentOS' %}
       - python
       - python2-pip
       - python-devel

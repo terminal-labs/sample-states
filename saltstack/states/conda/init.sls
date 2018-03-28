@@ -26,7 +26,7 @@ add_conda_to_bashrc:
 
 creat_conda_env:
   cmd.run:
-    - name: conda create -y --name conda_env pip
+    - name: sudo su {{ grains['deescalated_user'] }} -c "/home/{{ grains['deescalated_user'] }}/miniconda3/bin/conda create -y --name conda_env python=3.6 pip"
     - runas: {{ grains['deescalated_user'] }}
     - env:
       - PATH: {{ [current_path, conda_bin_path]|join(':') }}

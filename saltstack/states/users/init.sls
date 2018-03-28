@@ -1,13 +1,11 @@
-{{ grains['deescalated_user'] }}:
+saltmaster:
   user.present:
-    - home: /home/{{ grains['deescalated_user'] }}
-    - fullname: {{ grains['deescalated_user'] }}
+    - home: /home/saltmaster
+    - fullname: saltmaster
     - shell: /bin/bash
 
-color_prompt:
-  cmd.run:
-    - name: sed -i 's/^#force_color_prompt/force_color_prompt/g' .bashrc; sed -i 's/^\s*#alias grep/    alias grep/g' .bashrc
-    - cwd: /home/{{ grains['deescalated_user'] }}
-    - runas: {{ grains['deescalated_user'] }}
-    - require:
-      - sls: basebox
+sudoer-amazing:
+  file.append:
+    - name: /etc/sudoers
+    - text:
+      - "saltmaster    ALL=(ALL)	NOPASSWD: ALL"

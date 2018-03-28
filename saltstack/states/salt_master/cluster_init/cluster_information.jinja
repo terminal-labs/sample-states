@@ -1,0 +1,5 @@
+{%- for minion, addr in salt['mine.get']('*', 'inflation.get_primary_address').items() %}
+{{ minion }}:
+  ip_address: {{ addr }}{% for minion_target, primary_role in salt['mine.get'](minion, 'grains.get', 'primary_role').items() %}{{ primary_role }}{% endfor %}{% for a, b  in salt['mine.get'](minion, 'grains.item').items() %}{% for key, value in b.items() %}
+  {{ key }}: {{ value }}{% endfor %}{% endfor %}{% endfor %}
+  

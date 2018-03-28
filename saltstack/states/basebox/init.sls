@@ -1,4 +1,4 @@
-{% set os, os_family = salt['grains.item']('os', 'os_family') %}
+{% set os = salt['grains.get']('os') %}
 
 {% if os == 'CentOS' %}
 install_ius_for_centos:
@@ -9,6 +9,10 @@ install_ius_for_centos:
 setup_basebox:
   pkg.installed:
     - pkgs:
+{% if os == 'Ubuntu' or os == 'Debian' or os == 'CentOS' %}
+      - mercurial
+      - git
+      - ntp
       - rsync
       - p7zip
       - zip
@@ -17,7 +21,8 @@ setup_basebox:
       - curl
       - nano
       - emacs
-{% if os_family == 'Debian'%}
+{% endif %}
+{% if os == 'Ubuntu' or os == 'Debian'%}
       - build-essential
       - libreadline6-dev
       - libbz2-dev
@@ -56,5 +61,5 @@ special_post_install_yum_update_for_centos:
 {% endif %}
 
 ensure_bashrc_exists:
-  file.touch:
+  file.exists:
     - name: /home/{{ grains['deescalated_user'] }}/.bashrc

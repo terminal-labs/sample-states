@@ -1,41 +1,20 @@
 base:
-  'roles:project':
+  'roles:master':
     - match: grain
     - clean
     - basebox
     - basebox.symlink
-    - users                     {# requires basebox #}
+    - basebox.modify_bash_env
+    - network
+    - network.cluster
+    - users
+    - lastpass
+    - lastpass.login
+    - lastpass.github_keys
     - python
-    # - network
-    # - network.cluster
-    # - hg
-    # - hg.ssh
-    # - hg.repo
-    # - git
-    # - git.ssh
-    # - git.repo
-    # - database                {# required_in postgres #}
-    # - artifacts               {# requires {{ grains['dvcs'] }}.repo, required_in postgres #}
-    # - nginx                   {# requires {{ grains['dvcs'] }}.repo #}
-    # - venv                    {# requires {{ grains['dvcs'] }}.repo, python #}
-    # - venv.pip_requirements   {# requires venv #}
-    # - conda                   {# requires users #}
-    # - conda.anaconda          {# requires conda #}
-    # - conda.anaconda_license  {# requires conda.anaconda #}
-    # - conda.pip_requirements  {# requires conda #}
-    # - postgresql              {# requires {{ grains['dvcs'] }}.repo #}
-    # - conf
-    # - django
-    # - supervisord
-    # - hadoop
-    # - hadoop.hortonworks
-    # - hadoop.hortonworks-ambari    {# requires hadoop.hortonworks #}
-    # - hadoop.hortonworks-edgenode  {# requires hadoop.hortonworks #}
-    # - hadoop.hortonworks-worker    {# requires hadoop.hortonworks #}
-  'roles:prod':
-    - match: grain
-    - deploy_keys
-    - supervisord.start         {# requires supervisor #}
-  'roles:dev':
-    - match: grain
-    - users.aliases             {# requires users #}
+    - conda
+    - logging
+    - supervisord
+    - supervisord.logging_server
+    - supervisord.start
+    - salt_master
