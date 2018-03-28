@@ -83,19 +83,19 @@ host_ip_address=$(su saltmaster -c "cd /home/saltmaster;\
 
 sed -i -e 's~{{ master_address }}~'"$host_ip_address"'~g' /home/saltmaster/salt_controlplane/etc/salt/cloud.providers
 
-vendor=$(cat /vagrant/.tmp/vendor)
+vendor=$(cat /vagrant/.inflation-tmp/vendor)
 
 if [ "$vendor" == "digitalocean" ]
 then
-  personal_access_token=$(cat /vagrant/.tmp/auth_token)
+  personal_access_token=$(cat /vagrant/.inflation-tmp/auth_token)
   sed -i -e 's~{{ personal_access_token }}~'"$personal_access_token"'~g' /home/saltmaster/salt_controlplane/etc/salt/cloud.providers
 fi
 
 if [ "$vendor" == "aws" ]
 then
-  personal_access_key=$(cat /vagrant/.tmp/secret_auth_token)
+  personal_access_key=$(cat /vagrant/.inflation-tmp/secret_auth_token)
   sed -i -e 's~{{ personal_access_key }}~'"$personal_access_key"'~g' /home/saltmaster/salt_controlplane/etc/salt/cloud.providers
-  personal_access_token=$(cat /vagrant/.tmp/auth_token)
+  personal_access_token=$(cat /vagrant/.inflation-tmp/auth_token)
   sed -i -e 's~{{ personal_access_token }}~'"$personal_access_token"'~g' /home/saltmaster/salt_controlplane/etc/salt/cloud.providers
 fi
 

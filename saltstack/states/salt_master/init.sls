@@ -134,25 +134,25 @@ place_salt_minion_file:
 
 place_salt_cloud_providers_file:
   cmd.run:
-    - name: cp -r /vagrant/.tmp/cloud.providers /home/saltmaster/salt_controlplane/etc/salt/cloud.providers
+    - name: cp -r /vagrant/{{ grains['inflation_tmp_dir'] }}/cloud.providers /home/saltmaster/salt_controlplane/etc/salt/cloud.providers
     - cwd: /home/saltmaster
     - runas: saltmaster
 
 place_salt_cloud_profiles_file:
   cmd.run:
-    - name: cp -r /vagrant/.tmp/cloud.profiles /home/saltmaster/salt_controlplane/etc/salt/cloud.profiles
+    - name: cp -r /vagrant/{{ grains['inflation_tmp_dir'] }}/cloud.profiles /home/saltmaster/salt_controlplane/etc/salt/cloud.profiles
     - cwd: /home/saltmaster
     - runas: saltmaster
 
 place_salt_cloud_map_file:
   cmd.run:
-    - name: cp -r /vagrant/.tmp/cloud.map /home/saltmaster/salt_controlplane/etc/salt/cloud.map
+    - name: cp -r /vagrant/{{ grains['inflation_tmp_dir'] }}/cloud.map /home/saltmaster/salt_controlplane/etc/salt/cloud.map
     - cwd: /home/saltmaster
     - runas: saltmaster
 
 place_imported_salt_states:
   cmd.run:
-    - name: cp -r /vagrant/.tmp/imported_salt_states/. /home/saltmaster/salt_controlplane/etc/salt
+    - name: cp -r /vagrant/{{ grains['inflation_tmp_dir'] }}/imported_salt_states/. /home/saltmaster/salt_controlplane/etc/salt
     - cwd: /home/saltmaster
     - runas: saltmaster
 
