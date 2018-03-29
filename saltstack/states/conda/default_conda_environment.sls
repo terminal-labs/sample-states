@@ -1,10 +1,9 @@
-{% set saltstates = 'inflation-conductor-server-rambo' %}
 place_conda_environment_file:
   file.managed:
     - name: /home/{{ grains['deescalated_user'] }}/default_conda_environment.yml
     - source: salt://{{ saltstates }}/conda/default_conda_environment.yml
     - require:
-      - sls: {{ saltstates }}.conda
+      - sls: conda
 
 install_deps_from_conda_environment_file:
   cmd.run:
