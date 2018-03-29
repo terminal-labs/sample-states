@@ -20,7 +20,7 @@ fingerprint: 16:27:ac:a5:76:28:2d:36:63:1b:56:4d:eb:df:a6:48 # GitHub
 # artifact_drop_path: served_files/media
 # artifact_db_path: path/to/db_artifact
 
-inflation_tmp_dir = .inflation-tmp
+inflation_tmp_dir: .inflation-tmp
 
 # db_dump: default.sql
 # postgres_password: [pwd here]
