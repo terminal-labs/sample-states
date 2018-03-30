@@ -17,7 +17,7 @@ install_pex_into_venv:
     
 install_packages_into_venv:
   cmd.run:
-    - name: ./bin/pip install requests click flask
+    - name: ./bin/pip install requests click
     - cwd: /home/saltmaster/pex_venv
     - runas: saltmaster
 
