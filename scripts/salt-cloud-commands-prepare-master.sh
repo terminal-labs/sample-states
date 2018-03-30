@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 cd /home/saltmaster/salt_venv
 
-source functions.sh
+source /vagrant/scripts/functions.sh
 
 echo "stoping bootstrap salt minion and salt master"
 
