@@ -11,6 +11,10 @@ function saltmaster { # $1 = location, e.g. 'master' or '*', $2 = command
     eval $command
 }
 
+raw_public_key=$(cat /var/tmp/universal_cluster_key.pub)
+FS=' ' read -r -a array <<< "$raw_public_key"
+public_key="${array[1]}"
+
 echo "pinging minions"
 saltmaster "*" "test.ping"
 
