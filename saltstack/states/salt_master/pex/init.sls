@@ -9,6 +9,18 @@ update_venv_pip_for_pex:
     - cwd: /home/saltmaster/pex_venv
     - runas: saltmaster
 
+install_pex_into_venv:
+  cmd.run:
+    - name: ./bin/pip install pex
+    - cwd: /home/saltmaster/pex_venv
+    - runas: saltmaster
+    
+install_packages_into_venv:
+  cmd.run:
+    - name: ./bin/pip install requests click flask
+    - cwd: /home/saltmaster/pex_venv
+    - runas: saltmaster
+
 create_build_dir_for_pex:
   file.directory:
     - name:  /home/saltmaster/pex_build
