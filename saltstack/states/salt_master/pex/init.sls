@@ -35,12 +35,12 @@ place_pex_project:
 
 build_wheel_for_pex_project:
   cmd.run:
-    - name: ./bin/pip wheel -w . .
+    - name: /home/saltmaster/pex_venv/bin/pip wheel -w . .
     - cwd: /home/saltmaster/pex_build
     - runas: saltmaster
 
 build_app_for_pex_project:
   cmd.run:
-    - name: ./bin/pex --python=python3 -f /home/saltmaster/pex_build requests click myexample -e samplepkg.main -o samplepkg.pex
+    - name: /home/saltmaster/pex_venv/bin/pex --python=python3 -f /home/saltmaster/pex_build requests click myexample -e samplepkg.main -o samplepkg.pex
     - cwd: /home/saltmaster/pex_build
     - runas: saltmaster
