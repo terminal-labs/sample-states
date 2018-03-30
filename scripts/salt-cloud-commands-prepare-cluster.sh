@@ -20,6 +20,9 @@ saltmaster "*" "network.ip_addrs"
 echo "configuring basic cluster nodes"
 saltmaster "*" "state.sls cluster_init"
 
+echo "place pex app"
+saltmaster "*" "state.sls cluster_init.set_pex_utility"
+
 echo "set reboot round grain - first run"
 saltmaster "*" "grains.setval reboot_round 0"
 
