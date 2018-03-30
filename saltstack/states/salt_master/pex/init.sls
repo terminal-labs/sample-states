@@ -17,6 +17,6 @@ create_build_dir_for_pex:
  
 place_pex_project:
   cmd.run:
-    - name: cp -r /vagrant/pex_utility_package/ /home/saltmaster/pex_build
+    - name: cp -r /vagrant/pex_utility_package/. /home/saltmaster/pex_build
     - cwd: /home/saltmaster
     - runas: saltmaster
