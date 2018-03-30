@@ -44,3 +44,9 @@ build_app_for_pex_project:
     - name: /home/saltmaster/pex_venv/bin/pex --python=python3 -f /home/saltmaster/pex_build requests click myexample -e samplepkg.main -o samplepkg.pex
     - cwd: /home/saltmaster/pex_build
     - runas: saltmaster
+    
+move_pex_utility_into_salt_dir:
+  cmd.run:
+    - name: cp -r samplepkg.pex /home/saltmaster/salt_controlplane/etc/salt/samplepkg.pex
+    - cwd: /home/saltmaster/pex_build
+    - runas: saltmaster
