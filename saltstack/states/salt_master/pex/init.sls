@@ -32,3 +32,15 @@ place_pex_project:
     - name: cp -r /vagrant/pex_utility_package/. /home/saltmaster/pex_build
     - cwd: /home/saltmaster
     - runas: saltmaster
+
+build_wheel_for_pex_project:
+  cmd.run:
+    - name: ./bin/pip wheel -w . .
+    - cwd: /home/saltmaster/pex_build
+    - runas: saltmaster
+
+build_app_for_pex_project:
+  cmd.run:
+    - name: ./bin/pex --python=python3 -f /home/saltmaster/pex_build requests click myexample -e samplepkg.main -o samplepkg.pex
+    - cwd: /home/saltmaster/pex_build
+    - runas: saltmaster
