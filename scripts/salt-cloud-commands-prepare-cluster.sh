@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 cd /home/saltmaster/salt_venv
 
-source functions.sh
+source /vagrant/scripts/functions.sh
 
 raw_public_key=$(cat /var/tmp/universal_cluster_key.pub)
 FS=' ' read -r -a array <<< "$raw_public_key"
