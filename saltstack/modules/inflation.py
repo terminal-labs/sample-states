@@ -3,6 +3,23 @@ import subprocess
 def test():
     return 'custom modules test looks good'
 
+def change_minion_id():
+    new_id = "minion_12"
+    with open('/home/vagrant/minion_id') as f:
+        lines = f.readlines()
+        for line in lines:
+            if ":" in line:
+                split_line = line.split(":")
+                if 'id' in split_line[0]:
+                    old_id_line = line
+                    new_id_line =  split_line[0] + ": " +  new_id
+                    print "old id line >> ", old_id_line
+                    print "new id line >> ", new_id_line
+                    f.seek(0)
+                    content = f.read()
+                    print content
+
+
 def get_primary_address():
     data = subprocess.check_output(['ip', 'addr'])
     lines = data.split('\n')
