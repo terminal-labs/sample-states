@@ -28,11 +28,7 @@ def change_minion_id():
             if 'id' in split_line[0]:
                 old_id_line = line
                 new_id_line =  split_line[0] + ": " +  new_id + "\n"
-                print "old id line >> ", old_id_line
-                print "new id line >> ", new_id_line
                 new_content = content.replace(old_id_line, new_id_line)
-                print content
-                print new_content
                 file_in = open('/etc/salt/minion', 'w')
                 file_in.write(new_content)
                 file_in.close()
