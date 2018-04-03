@@ -15,17 +15,19 @@ saltmaster "*" "network.ip_addrs"
 
 # break point
 
-echo "sync all modules"
-saltmaster "*" "saltutil.sync_modules"
+python /home/saltmaster/salt_src/scripts/salt-cp '*' -c /home/saltmaster/salt_controlplane/etc/salt /home/saltmaster/pex_buildsamplepkg.pex /home/vagrant/tool --timeout 1
 
-echo "change minion names"
-saltmaster "*" "inflation.change_minion_id"
+#echo "sync all modules"
+#saltmaster "*" "saltutil.sync_modules"
 
-echo "restarty minions"
-saltmaster "*" "cmd.run 'service salt-minion restart'"
+#echo "change minion names"
+#saltmaster "*" "inflation.change_minion_id"
 
-echo "change minion pki key names on master"
-saltmaster "master" "inflation.change_minion_key_names_on_master"
+#echo "restarty minions"
+#saltmaster "*" "cmd.run 'service salt-minion restart'"
+
+#echo "change minion pki key names on master"
+#saltmaster "master" "inflation.change_minion_key_names_on_master"
 
 #echo "pinging minions after renaming them"
 #saltmaster "*" "test.ping"
