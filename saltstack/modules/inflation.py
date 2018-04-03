@@ -16,7 +16,8 @@ def change_minion_key_names_on_master():
         return "path does not exist"
 
 def change_minion_id():
-    new_id = "minion-12"
+    old_id = __grains__['id']
+    new_id = old_id.split('-')[0] + '-' + old_id.split('-')[1]
     file_in = open('/etc/salt/minion')
     lines = file_in.readlines()
     file_in.seek(0)
@@ -24,7 +25,7 @@ def change_minion_id():
     file_in.close()
     for line in lines:
         if ":" in line:
-	    split_line = line.split(":")
+            split_line = line.split(":")
             if 'id' in split_line[0]:
                 old_id_line = line
                 new_id_line =  split_line[0] + ": " +  new_id + "\n"
