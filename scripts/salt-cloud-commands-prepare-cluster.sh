@@ -15,14 +15,17 @@ saltmaster "*" "network.ip_addrs"
 
 # break point
 
-#echo "sync all modules"
-#saltmaster "*" "saltutil.sync_modules"
+echo "sync all modules"
+saltmaster "*" "saltutil.sync_modules"
 
-#echo "change minion names"
-#saltmaster "*" "inflation.change_minion_id"
+echo "change minion names"
+saltmaster "*" "inflation.change_minion_id"
 
-#echo "change minion pki key names on master"
-#saltmaster "master" "inflation.change_minion_key_names_on_master"
+echo "restarty minions"
+saltmaster "*" "cmd.run 'service salt-minion restart'"
+
+echo "change minion pki key names on master"
+saltmaster "master" "inflation.change_minion_key_names_on_master"
 
 #echo "pinging minions after renaming them"
 #saltmaster "*" "test.ping"
