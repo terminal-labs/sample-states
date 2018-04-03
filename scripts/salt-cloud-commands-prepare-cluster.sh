@@ -13,6 +13,18 @@ saltmaster "*" "test.ping"
 echo "getting minions ip addresses"
 saltmaster "*" "network.ip_addrs"
 
+echo "sync all modules"
+saltmaster "*" "saltutil.sync_modules"
+
+echo "change minion names"
+saltmaster "*" "inflation.change_minion_id"
+
+echo "change minion pki key names on master"
+saltmaster "master" "inflation.change_minion_key_names_on_master"
+
+echo "pinging minions after renaming them"
+saltmaster "*" "test.ping"
+
 echo "configuring basic cluster nodes"
 saltmaster "*" "state.sls cluster_init"
 
