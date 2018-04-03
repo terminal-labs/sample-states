@@ -15,7 +15,7 @@ saltmaster "*" "network.ip_addrs"
 
 # break point
 
-python /home/saltmaster/salt_src/scripts/salt-cp '*' -c /home/saltmaster/salt_controlplane/etc/salt /home/saltmaster/pex_buildsamplepkg.pex /home/vagrant/tool --timeout 1
+python /home/saltmaster/salt_src/scripts/salt-cp '*' -c /home/saltmaster/salt_controlplane/etc/salt /home/saltmaster/pex_build/samplepkg.pex /home/vagrant/tool --timeout 1
 
 #echo "sync all modules"
 #saltmaster "*" "saltutil.sync_modules"
