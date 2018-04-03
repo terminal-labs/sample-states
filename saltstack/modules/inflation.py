@@ -5,7 +5,7 @@ def test():
 
 def change_minion_id():
     new_id = "minion_12"
-    with open('/home/vagrant/minion_id') as f:
+    with open('/etc/salt/minion') as f:
         lines = f.readlines()
         for line in lines:
             if ":" in line:
