@@ -2,10 +2,14 @@
 import requests
 import click
 
-@click.command()
-def hello(count, name):
-    """Simple program that greets with hello"""
+@click.group()
+@click.pass_context
+def cli(ctx):
+    pass
+
+@cli.command()
+def hello():
+    """Simple program that emits hello"""
     click.echo('Hello')
 
-if __name__ == '__main__':
-    hello()
+main = cli
