@@ -12,4 +12,5 @@ def hello():
     """Simple program that emits hello"""
     click.echo('Hello')
 
-main = cli
+if __name__ == "__main__":
+    cli()
