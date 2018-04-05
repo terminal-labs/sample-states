@@ -20,13 +20,13 @@ su saltmaster -c "cd /home/saltmaster;\
  sudo /home/saltmaster/salt_venv/bin/python /home/saltmaster/salt_src/scripts/salt-cp '*' -C -c /home/saltmaster/salt_controlplane/etc/salt /home/saltmaster/pex_build/samplepkg.pex /rambo/tool --timeout 1"
 
 echo "run pex tool"
-saltmaster "*" "cmd.run env='{\"LC_ALL\": \"C.UTF-8\"}' '/rambo/tool truncate_minion_id"
+saltmaster "*" "cmd.run env='{\"LC_ALL\": \"C.UTF-8\"}' '/rambo/tool truncate_minion_id'"
 
 echo "restarty minions"
 saltmaster "*" "cmd.run 'service salt-minion restart'"
 
 echo "run pex tool"
-saltmaster "master" "cmd.run env='{\"LC_ALL\": \"C.UTF-8\"}' '/rambo/tool truncate_minion_key_names"
+saltmaster "master" "cmd.run env='{\"LC_ALL\": \"C.UTF-8\"}' '/rambo/tool truncate_minion_key_names'"
 
 sleep 5s
 
