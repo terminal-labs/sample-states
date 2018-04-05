@@ -20,7 +20,10 @@ def truncate_minion_id():
             split_line = line.split(":")
             if 'id' in split_line[0]:
                 old_id = split_line[1].strip()
-                new_id = old_id.split('-')[0] + '-' + old_id.split('-')[1]
+                if old_id.count('-') > 0:
+                    new_id = old_id.split('-')[0] + '-' + old_id.split('-')[1]
+                else:
+                    new_id = old_id
                 old_id_line = line
                 new_id_line =  split_line[0] + ": " +  new_id + "\n"
                 new_content = content.replace(old_id_line, new_id_line)
