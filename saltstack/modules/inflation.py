@@ -4,17 +4,6 @@ import subprocess
 def test():
     return 'custom modules test looks good'
 
-def change_minion_key_names_on_master():
-    path = '/home/saltmaster/salt_master_root/etc/salt/pki/master/minions'
-    if os.path.exists(path):
-        filenames = os.listdir(path)
-        for filename in filenames:
-            if filename.count('-') == 2:
-                os.rename(path + '/' + filename, path + '/' + filename.split('-')[0] + '-' + filename.split('-')[1] )
-                return filename
-    else:
-        return "path does not exist"
-
 def change_minion_id():
     old_id = __grains__['id']
     new_id = old_id.split('-')[0] + '-' + old_id.split('-')[1]
