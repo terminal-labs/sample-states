@@ -15,4 +15,5 @@ get_github_public_key:
 set_github_private_key:
   file.managed:
     - name: /home/{{ grains['deescalated_user'] }}/.ssh/lastpass
+    - replace: False
     - mode: 600
