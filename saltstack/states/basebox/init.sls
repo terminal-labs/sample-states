@@ -1,4 +1,5 @@
 #!stateconf yaml . jinja
+
 {% set os = salt['grains.get']('os') %}
 
 {% if os == 'CentOS' %}
