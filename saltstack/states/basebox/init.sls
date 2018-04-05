@@ -1,12 +1,13 @@
+#!stateconf yaml . jinja
 {% set os = salt['grains.get']('os') %}
 
 {% if os == 'CentOS' %}
-install_ius_for_centos:
+.install_ius_for_centos:
   cmd.run:
     - name: yum -y install https://centos7.iuscommunity.org/ius-release.rpm
 {% endif %}
 
-setup_basebox:
+.setup_basebox:
   pkg.installed:
     - pkgs:
 {% if os == 'Ubuntu' or os == 'Debian' or os == 'CentOS' %}
@@ -60,6 +61,6 @@ special_post_install_yum_update_for_centos:
     - name: yum -y update
 {% endif %}
 
-ensure_bashrc_exists:
+.ensure_bashrc_exists:
   file.exists:
     - name: /home/{{ grains['deescalated_user'] }}/.bashrc
