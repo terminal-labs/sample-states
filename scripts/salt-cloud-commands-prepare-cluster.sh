@@ -19,6 +19,9 @@ su saltmaster -c "cd /home/saltmaster;\
  source salt_venv/bin/activate;\
  sudo /home/saltmaster/salt_venv/bin/python /home/saltmaster/salt_src/scripts/salt-cp '*' -C -c /home/saltmaster/salt_controlplane/etc/salt /home/saltmaster/pex_build/samplepkg.pex /rambo/tool --timeout 1"
 
+echo "run pex tool"
+saltmaster "*" "cmd.run env='{\"LC_ALL\": \"C.UTF-8\"}' '/rambo/tool hello'
+
 #echo "sync all modules"
 #saltmaster "*" "saltutil.sync_modules"
 
