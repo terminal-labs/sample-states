@@ -20,28 +20,21 @@ su saltmaster -c "cd /home/saltmaster;\
  sudo /home/saltmaster/salt_venv/bin/python /home/saltmaster/salt_src/scripts/salt-cp '*' -C -c /home/saltmaster/salt_controlplane/etc/salt /home/saltmaster/pex_build/samplepkg.pex /rambo/tool --timeout 1"
 
 echo "run pex tool"
-saltmaster "*" "cmd.run env='{\"LC_ALL\": \"C.UTF-8\"}' '/rambo/tool truncate_minion_key_names"
+saltmaster "*" "cmd.run env='{\"LC_ALL\": \"C.UTF-8\"}' '/rambo/tool truncate_minion_id"
 
-#echo "sync all modules"
-#saltmaster "*" "saltutil.sync_modules"
+echo "restarty minions"
+saltmaster "*" "cmd.run 'service salt-minion restart'"
 
-#echo "change minion names"
-#saltmaster "*" "inflation.change_minion_id"
+echo "run pex tool"
+saltmaster "master" "cmd.run env='{\"LC_ALL\": \"C.UTF-8\"}' '/rambo/tool truncate_minion_key_names"
 
-#echo "restarty minions"
-#saltmaster "*" "cmd.run 'service salt-minion restart'"
-
-#echo "change minion pki key names on master"
-#saltmaster "master" "inflation.change_minion_key_names_on_master"
+sleep 5s
 
 echo "pinging minions after renaming them"
 saltmaster "*" "test.ping"
 
 echo "configuring basic cluster nodes"
 saltmaster "*" "state.sls cluster_init"
-
-#echo "place pex app"
-#saltmaster "*" "state.sls cluster_init.set_pex_utility"
 
 echo "set reboot round grain - first run"
 saltmaster "*" "grains.setval reboot_round 0"
