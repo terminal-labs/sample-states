@@ -28,7 +28,7 @@ saltmaster "*" "cmd.run 'service salt-minion restart'"
 echo "run pex tool"
 saltmaster "master" "cmd.run env='{\"LC_ALL\": \"C.UTF-8\"}' '/rambo/tool truncate_minion_key_names'"
 
-sleep 5s
+sleep 30s
 
 echo "pinging minions after renaming them"
 saltmaster "*" "test.ping"
