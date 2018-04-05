@@ -1,4 +1,4 @@
-# requests isn't actually used, but this demonstrates it being available in main.py
+import os
 import requests
 import click
 
@@ -8,9 +8,14 @@ def cli(ctx):
     pass
 
 @cli.command()
-def hello():
-    """Simple program that emits hello"""
-    click.echo('Hello')
+def truncate_minion_key_names():
+    path = '/home/saltmaster/salt_master_root/etc/salt/pki/master/minions'
+    if os.path.exists(path):
+        filenames = os.listdir(path)
+        for filename in filenames:
+            if filename.count('-') == 2:
+                os.rename(path + '/' + filename, path + '/' + filename.split('-')[0] + '-' + filename.split('-')[1] )
+    return "truncated some key names"
 
 if __name__ == "__main__":
     cli()
