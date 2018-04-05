@@ -4,25 +4,6 @@ import subprocess
 def test():
     return 'custom modules test looks good'
 
-def change_minion_id():
-    old_id = __grains__['id']
-    new_id = old_id.split('-')[0] + '-' + old_id.split('-')[1]
-    file_in = open('/etc/salt/minion')
-    lines = file_in.readlines()
-    file_in.seek(0)
-    content = file_in.read()
-    file_in.close()
-    for line in lines:
-        if ":" in line:
-            split_line = line.split(":")
-            if 'id' in split_line[0]:
-                old_id_line = line
-                new_id_line =  split_line[0] + ": " +  new_id + "\n"
-                new_content = content.replace(old_id_line, new_id_line)
-                file_in = open('/etc/salt/minion', 'w')
-                file_in.write(new_content)
-                file_in.close()
-
 def get_primary_address():
     data = subprocess.check_output(['ip', 'addr'])
     lines = data.split('\n')
