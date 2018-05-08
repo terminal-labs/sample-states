@@ -1,0 +1,14 @@
+digitalocean-ubuntu:
+  provider: my-digitalocean-config
+  image: 14.04 x64
+  size: 512MB
+  location: New York 1
+  private_networking: True
+  backups_enabled: True
+  ipv6: True
+  create_dns_record: True
+  userdata_file: /etc/salt/cloud.userdata.d/setup
+  tags:
+    - tag1
+    - tag2
+    - tag3

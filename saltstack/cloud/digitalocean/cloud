@@ -1,0 +1,10 @@
+#digitalocean config
+# /etc/salt/cloud
+providers:
+  my-aws-migrated-config:
+    id: some id
+    key: some key
+    keyname: test
+    securitygroup: quick-start
+    private_key: /root/test.pem
+    driver: ec2
