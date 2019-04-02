@@ -13,7 +13,7 @@ vpn_vars_config:
 vpn_conf:
   file.managed:
     - name: /home/{{ grains['deescalated_user'] }}/openvpn-ca/vars
-    - source: salt://vpn/vars
+    - source: salt://vpn/files/vars
     - user: {{ grains['deescalated_user'] }}
     - group: {{ grains['deescalated_user'] }}
 
@@ -55,7 +55,7 @@ vpn_copy-keys:
 vpn_server_conf:
   file.managed:
     - name: /etc/openvpn/server.conf
-    - source: salt://vpn/server.conf
+    - source: salt://vpn/files/server.conf
     - user: {{ grains['deescalated_user'] }}
     - group: {{ grains['deescalated_user'] }}
 
@@ -66,11 +66,11 @@ vpn_kernel_packet_forwarding:
 vpn_ufw_packet_forward:
   cmd.run:
     - name: sed -i 's/^DEFAULT_FORWARD_POLICY=\"DROP\"/DEFAULT_FORWARD_POLICY=\"ACCEPT\"/g' /etc/default/ufw
-    
+
 vpn_ufw_rules:
   file.managed:
     - name: /etc/ufw/before.rules
-    - source: salt://vpn/before.rules
+    - source: salt://vpn/files/before.rules
     - template: jinja
 
 vpn_ufw_allow_port:
@@ -97,7 +97,7 @@ vpn_create_client_dir:
 vpn_create_client_base:
   file.managed:
     - name: /home/{{ grains['deescalated_user'] }}/client-configs/base.conf
-    - source: salt://vpn/base.conf
+    - source: salt://vpn/files/base.conf
     - user: {{ grains['deescalated_user'] }}
     - group: {{ grains['deescalated_user'] }}
     - mode: 700
@@ -105,8 +105,7 @@ vpn_create_client_base:
 vpn_create_make_config_script:
   file.managed:
     - name: /home/{{ grains['deescalated_user'] }}/client-configs/make_config.sh
-    - source: salt://vpn/make_config.sh
+    - source: salt://vpn/files/make_config.sh
     - user: {{ grains['deescalated_user'] }}
     - group: {{ grains['deescalated_user'] }}
     - mode: 700
-
