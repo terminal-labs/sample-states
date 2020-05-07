@@ -1,0 +1,42 @@
+rhel_ec2:
+  provider: my-ec2-config
+  image: ami-e565ba8c
+  size: t1.micro
+  minion:
+    cheese: edam
+
+ubuntu_ec2:
+  provider: my-ec2-config
+  image: ami-7e2da54e
+  size: t1.micro
+  minion:
+    cheese: edam
+
+ubuntu_rackspace:
+  provider: my-rackspace-config
+  image: Ubuntu 12.04 LTS
+  size: 256 server
+  minion:
+    cheese: edam
+
+fedora_rackspace:
+  provider: my-rackspace-config
+  image: Fedora 17
+  size: 256 server
+  minion:
+    cheese: edam
+
+cent_linode:
+  provider: my-linode-config
+  image: CentOS 6.2 64bit
+  size: Linode 512
+
+cent_gogrid:
+  provider: my-gogrid-config
+  image: 12834
+  size: 512MB
+
+cent_joyent:
+  provider: my-joyent-config
+  image: centos-7
+  size: g4-highram-16G

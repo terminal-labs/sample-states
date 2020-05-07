@@ -1,0 +1,6 @@
+my-digitalocean-config:
+  driver: digitalocean
+  personal_access_token: xxx
+  ssh_key_file: /path/to/ssh/key/file
+  ssh_key_names: my-key-name,my-key-name-2
+  location: New York 1

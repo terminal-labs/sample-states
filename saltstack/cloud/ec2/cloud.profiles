@@ -1,0 +1,14 @@
+micro_ec2:
+  provider: my-ec2
+  image: ami-d514f291
+  size: t1.micro
+
+medium_ec2:
+  provider: my-ec2
+  image: ami-d514f291
+  size: m3.medium
+
+large_ec2:
+  provider: my-ec2
+  image: ami-d514f291
+  size: m3.large
