@@ -4,3 +4,4 @@ install_python39:
   pkg.installed:
     - pkgs:
       - python39
+      - python39-pip
