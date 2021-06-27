@@ -18,10 +18,9 @@ create_conda_env_py39_dask:
     - onfail:
       - cmd: check_conda_env_py39_dask
 
-
 activate_conda_env_py39_dask:
   cmd.run:
-    - name: 'conda activate py39_dask'
+    - name: 'source ~/miniconda3/etc/profile.d/conda.sh && conda activate py39_dask'
     - shell: /bin/bash
     - env:
       - PATH: /root/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/root/bin
