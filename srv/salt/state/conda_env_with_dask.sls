@@ -30,4 +30,4 @@ install_dask_in_conda_py39_dask_env:
   cmd.run:
     - name: 'source ~/miniconda3/etc/profile.d/conda.sh && conda activate py39_dask && conda install dask'
     - onfail:
-	  - cmd: check_dask_install_in_ev_py39_dask
+      - cmd: check_dask_install_in_ev_py39_dask
