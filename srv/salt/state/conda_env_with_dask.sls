@@ -7,7 +7,7 @@ check_conda_env_py39_dask:
     - env:
       - PATH: /root/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/root/bin
     - require:
-      - check_conda_install
+      - check_conda_install  # miniconda.sls; will ensure conda is set up.
 
 create_conda_env_py39_dask:
   cmd.run:
