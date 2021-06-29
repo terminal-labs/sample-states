@@ -17,6 +17,8 @@ miniconda_installer_present:
 install_miniconda:
   cmd.run:
     - name: 'sudo /home/centos/Miniconda3-latest-Linux-x86_64.sh -b -u'
+    - require:
+        - miniconda_installer_present
     - onfail:
       - cmd: miniconda_installed
 
