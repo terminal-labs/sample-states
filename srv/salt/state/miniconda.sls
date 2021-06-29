@@ -22,13 +22,3 @@ install_miniconda:
     - onfail:
       - cmd: miniconda_installed
 
-ensure_miniconda_path_in_bashrc:
-  file.replace:
-    - name: ~/.bashrc
-    - pattern: /^export PATH="/root/miniconda3/bin:$PATH"/
-    - repl: export PATH="/root/miniconda3/bin:$PATH"
-    - append_if_not_found: True
-# ensure_miniconda_path_in_bashrc needs to run each time:
-#   check_conda_install working does not guarantee path is in bashrc, as PATH is passed to that command.
-#    - onfail:
-#      - cmd: check_conda_install
