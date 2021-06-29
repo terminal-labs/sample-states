@@ -12,10 +12,6 @@ create_conda_env_py39_dask:
     - onfail:
       - cmd: conda_env_py39_dask_exists
 
-activate_conda_env_py39_dask:
-  cmd.run:
-    - name: 'source ~/miniconda3/etc/profile.d/conda.sh && conda activate py39_dask'
-
 dask_installed_in_env_py39_dask:
   cmd.run:
     - name: 'source ~/miniconda3/etc/profile.d/conda.sh && conda activate py39_dask && conda list | grep "dask"'
