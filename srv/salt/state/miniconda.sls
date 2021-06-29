@@ -2,11 +2,7 @@
 
 check_conda_install:
   cmd.run:
-    - name: conda --version
-    - runas: root
-    - shell: /bin/bash
-    - env:
-      - PATH: /root/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/root/bin
+    - name: source ~/miniconda3/etc/profile.d/conda.sh && conda --version
 
 ensure_miniconda_installer:
   file.managed:

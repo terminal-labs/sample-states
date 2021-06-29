@@ -2,19 +2,13 @@
 
 check_conda_env_py39_dask:
   cmd.run:
-    - name: 'conda env list | grep "py39_dask"'
-    - shell: /bin/bash
-    - env:
-      - PATH: /root/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/root/bin
+    - name: 'source ~/miniconda3/etc/profile.d/conda.sh && conda env list | grep "py39_dask"'
     - require:
       - check_conda_install  # miniconda.sls; will ensure conda is set up.
 
 create_conda_env_py39_dask:
   cmd.run:
-    - name: 'conda create --name py39_dask python=3.9'
-    - shell: /bin/bash
-    - env:
-      - PATH: /root/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/root/bin
+    - name: 'source ~/miniconda3/etc/profile.d/conda.sh && conda create --name py39_dask python=3.9'
     - onfail:
       - cmd: check_conda_env_py39_dask
 
