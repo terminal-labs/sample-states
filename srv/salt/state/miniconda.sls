@@ -1,10 +1,10 @@
 # File:/srv/salt/miniconda.sls
 
-miniconda_installed:
+check_for_miniconda:
   cmd.run:
     - name: source ~/miniconda3/etc/profile.d/conda.sh && conda --version
 
-miniconda_installer_present:
+download_miniconda:
   file.managed:
     - name: /home/centos/Miniconda3-latest-Linux-x86_64.sh
     - source: https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
@@ -20,4 +20,3 @@ install_miniconda:
         - miniconda_installer_present
     - onfail:
       - cmd: miniconda_installed
-
