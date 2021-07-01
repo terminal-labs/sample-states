@@ -9,7 +9,6 @@ miniconda_installer_present:
     - name: /home/centos/Miniconda3-latest-Linux-x86_64.sh
     - source: https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
     - skip_verify: True
-    - keep_source: True  # Keep to avoid re-downloading.
     - mode: 700
     - onfail:
       - cmd: miniconda_installed
